@@ -1,4 +1,11 @@
 # looppa
+
+[![Build Status][travis-image]][travis-url]
+
+[![NPM version][npm-version-image]][npm-url]
+[![NPM downloads][npm-downloads-image]][npm-url]
+[![MIT License][license-image]][license-url]
+
 Simple functional script to loop array, strings, numbers, objects, Map and Set
 
 # Installation
@@ -88,4 +95,19 @@ This script is really handy if you need to deal with React loops
 </div>
 ```
 
+# Watch out
+
+`looppa` uses the modern ES2015 `Object.entries` method internally that is not supported by every browser. Use a polyfill if you need to support old browsers.
+
 [check the demo](https://plnkr.co/edit/uobOWoWS8EpG9kgtwpwL?p=preview)
+
+
+[travis-image]:https://img.shields.io/travis/dreipol/looppa.svg?style=flat-square
+[travis-url]:https://travis-ci.org/dreipol/looppa
+
+[license-image]:http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square
+[license-url]:LICENSE.txt
+
+[npm-version-image]:http://img.shields.io/npm/v/looppa.svg?style=flat-square
+[npm-downloads-image]:http://img.shields.io/npm/dm/looppa.svg?style=flat-square
+[npm-url]:https://npmjs.org/package/looppa
