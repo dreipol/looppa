@@ -1,0 +1,36 @@
+{
+  "name": "looppa",
+  "version": "1.0.0",
+  "description": "Simple functional script to loop array, strings, numbers, objects, Map and Set",
+  "main": "index.js",
+  "module": "index.next.js",
+  "scripts": {
+    "prepublish": "rollup -n looppa -f umd index.next.js > index.js",
+    "lint": "eslint index.next.js test.js",
+    "test": "npm run prepublish && npm run lint && mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreipol/looppa.git"
+  },
+  "keywords": [
+    "functional",
+    "loop",
+    "iteration",
+    "array",
+    "object",
+    "helper"
+  ],
+  "author": "Dreipol <dev@dreipol.ch> (http://dreipol.ch)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dreipol/looppa/issues"
+  },
+  "homepage": "https://github.com/dreipol/looppa#readme",
+  "devDependencies": {
+    "@dreipol/eslint-config": "^1.2.2",
+    "eslint": "^3.19.0",
+    "mocha": "^3.3.0",
+    "rollup": "^0.41.6"
+  }
+}
