@@ -11,34 +11,39 @@ describe('looppa the looper', () => {
         assert.equal(undefinedIter.length, 0);
     });
 
-    it('leave untouched row arrays', () => {
+    it('convert arrays into array entries', () => {
         const iter = looppa([1, 2, 3]);
         assert.ok(iter.map);
         assert.equal(iter.length, 3);
+        assert.deepEqual(iter, [[0, 1], [1, 2], [2, 3]]);
     });
 
     it('convert numbers into arrays', () => {
         const iter = looppa(3);
         assert.ok(iter.map);
         assert.equal(iter.length, 3);
+        assert.deepEqual(iter, [0, 1, 2]);
     });
 
     it('convert strings into arrays', () => {
         const iter = looppa('ciao');
         assert.ok(iter.map);
         assert.equal(iter.length, 4);
+        assert.deepEqual(iter, ['c', 'i', 'a', 'o']);
     });
 
     it('convert objects into arrays', () => {
         const iter = looppa({ foo: 'bar', baz: 'buz' });
         assert.ok(iter.map);
         assert.equal(iter.length, 2);
+        assert.deepEqual(iter, [['foo', 'bar'], ['baz', 'buz']]);
     });
 
     it('convert Maps into arrays', () => {
-        const iter = looppa(new Map().set(NaN, 'foo'));
+        const iter = looppa(new Map().set({}, 'foo'));
         assert.ok(iter.map);
         assert.equal(iter.length, 1);
+        assert.deepEqual(iter, [[{}, 'foo']]);
     });
 
     it('convert Sets into arrays', () => {
@@ -48,5 +53,6 @@ describe('looppa the looper', () => {
         const iter = looppa(set);
         assert.ok(iter.map);
         assert.equal(iter.length, 2);
+        assert.deepEqual(iter, [['foo', 'foo'], ['bar', 'bar']]);
     });
 });
