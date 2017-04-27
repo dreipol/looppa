@@ -1,14 +1,16 @@
 /**
- * Try to make loopable any kind of javascript primitive
+ * Try to convert to array any kind of javascript primitive
  * @param   {any} collection - hopefully something that we can loop
  * @param   {number} to - the end of a number range
- * @returns {Array} it will return always an array
+ * @returns {arrya} it will return always an array
  */
-export default function looppa(collection, to) {
+function toArray(collection, to) {
     // Special case: handle numbers
-    if (isNumber(collection) && isNumber(to)) {
-        return Array.from({ length: (to - collection + 1) }, (v, key) => [collection + key, collection + key]);
-    } else if (to) {
+    if (typeof to !== 'undefined') {
+        if (isNumber(collection) && isNumber(to)) {
+            return Array.from({ length: (to - collection + 1) }, (v, key) => [collection + key, collection + key]);
+        }
+
         throw new TypeError('Both arguments need to be a number when creating a number range.');
     }
 
@@ -40,3 +42,23 @@ export default function looppa(collection, to) {
 function isNumber(number) {
     return typeof number === 'number' && !isNaN(number);
 }
+
+/**
+ * Transform the collecition into an array and return a function that can be looped
+ * @param   {any} collection
+ * @param   {number} to
+ * @returns {function} function that will receive (value, key, index) always
+ */
+export default function looppa(collection, to) {
+    return function(fn) {
+        let arr = toArray(collection, to);
+
+        if (fn) {
+            arr = arr.map(([value, key], index) => fn(value, key, index));
+        }
+
+        return arr;
+    };
+}
+
+
