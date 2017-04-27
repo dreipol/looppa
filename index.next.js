@@ -4,6 +4,11 @@
  * @returns {Array} it will return always an array
  */
 export default function looppa(collection) {
+    // handle falsy values
+    if (!collection) {
+        return [];
+    }
+
     // don't touch arrays
     if (Array.isArray(collection)) {
         return collection;
@@ -12,7 +17,7 @@ export default function looppa(collection) {
     // handle numbers and strings
     switch (typeof collection) {
         case 'number':
-            return Array.from(Array(collection).keys());
+            return Object.keys(Array.from(Array(collection)));
         case 'string':
             return collection.split('');
         default:
@@ -21,7 +26,12 @@ export default function looppa(collection) {
 
     // get the object entries
     if (Object.prototype.toString.call(collection) === '[object Object]') {
-        return Object.entries(collection);
+        return Object
+            .keys(collection)
+            .reduce(function(acc, key) {
+                acc.push([key, collection[key]]);
+                return acc;
+            }, []);
     }
 
     // loop Map and Set

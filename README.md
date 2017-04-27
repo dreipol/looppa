@@ -18,6 +18,10 @@ npm i looppa -S
 ```js
 import looppa from 'looppa';
 
+// normalize null and undefined
+const nullCollection = looppa(null) // []
+const undefinedCollection = looppa(undefined) // []
+
 // arrays will be left untouched
 const array = looppa(['foo', null, undefined]); // ['foo', null, undefined]
 
@@ -94,10 +98,6 @@ This script is really handy if you need to deal with React loops
   </ul>
 </div>
 ```
-
-# Watch out
-
-`looppa` uses the modern ES2015 `Object.entries` method internally that is not supported by every browser. Use a polyfill if you need to support old browsers.
 
 [check the demo](https://plnkr.co/edit/uobOWoWS8EpG9kgtwpwL?p=preview)
 

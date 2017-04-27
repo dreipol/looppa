@@ -1,6 +1,16 @@
 const assert = require('assert');
 const looppa = require('./');
 describe('looppa the looper', () => {
+    it('nomalize null and undefined values into arrays', () => {
+        const nullIter = looppa(null);
+        assert.ok(nullIter.map);
+        assert.equal(nullIter.length, 0);
+
+        const undefinedIter = looppa(undefined); // eslint-disable-line
+        assert.ok(undefinedIter.map);
+        assert.equal(undefinedIter.length, 0);
+    });
+
     it('leave untouched row arrays', () => {
         const iter = looppa([1, 2, 3]);
         assert.ok(iter.map);
