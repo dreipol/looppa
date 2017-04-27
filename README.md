@@ -56,52 +56,51 @@ This script is really handy if you need to deal with React loops
 
 ```jsx
 <div>
-
   <h1>Array</h1>
   <ul>
-    {looppa([1, 2, 3]).map(([number]) => (
+    {looppa([1, 2, 3])(number => (
       <li>{number}</li>
     ))}
   </ul>
 
   <h1>Numbers</h1>
   <ul>
-    {looppa(0, 5).map(([number]) => (
+    {looppa(0, 5)(number => (
       <li>{number}</li>
     ))}
   </ul>
 
   <h1>Letters</h1>
   <ul>
-    {looppa('ciao').map(([letter]) => (
+    {looppa('ciao')(letter => (
       <li>{letter}</li>
     ))}
   </ul>
 
   <h1>Object</h1>
   <ul>
-    {looppa({ foo: 'bar', baz: 'buz' }).map(([value, key]) => (
+    {looppa({ foo: 'bar', baz: 'buz' })((value, key) => (
       <li>{key}, {value}</li>
     ))}
   </ul>
 
   <h1>Map</h1>
   <ul>
-    {looppa(new Map().set(1, 'bar')).map(([value, key]) => (
+    {looppa(new Map().set(1, 'bar'))((value, key) => (
       <li>{key}, {value}</li>
     ))}
   </ul>
 
   <h1>Set</h1>
   <ul>
-    {looppa(new Set().add('foo').add('bar')).map(([value]) => (
+    {looppa(new Set().add('foo').add('bar'))(value => (
       <li>{value}</li>
     ))}
   </ul>
 </div>
 ```
 
-[check the demo](https://plnkr.co/edit/rayViTEz4XPv6DnBP3ZN?p=preview)
+[check the demo](https://plnkr.co/edit/1DHUkr1mCUafiwz68f62?p=preview)
 
 
 [travis-image]:https://img.shields.io/travis/dreipol/looppa.svg?style=flat-square
