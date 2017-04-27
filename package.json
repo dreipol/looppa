@@ -1,6 +1,6 @@
 {
   "name": "looppa",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple functional script to loop array, strings, numbers, objects, Map and Set",
   "main": "index.js",
   "module": "index.next.js",
