@@ -15,18 +15,15 @@ export default function looppa(collection) {
         return [...collection.entries()];
     }
 
-    // handle numbers and strings
-    switch (typeof collection) {
-        case 'number':
-            return Array.from({ length: collection }, (v, key) => key);
-        case 'string':
-            return collection.split('');
-        default:
-            // Default for all other object types, booleans and symbols
-            return Object
-                .keys(collection)
-                .map((key) => {
-                    return [key, collection[key]];
-                });
+    // handle numbers
+    if (typeof collection === 'number') {
+        return Array.from({ length: collection }, (v, key) => [key, key]);
     }
+
+    // Default for all other object types, strings, booleans and symbols
+    return Object
+        .keys(collection)
+        .map((key) => {
+            return [key, collection[key]];
+        });
 }
