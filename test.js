@@ -22,14 +22,14 @@ describe('looppa the looper', () => {
         const iter = looppa(3);
         assert.ok(iter.map);
         assert.equal(iter.length, 3);
-        assert.deepEqual(iter, [0, 1, 2]);
+        assert.deepEqual(iter, [[0, 0], [1, 1], [2, 2]]);
     });
 
     it('convert strings into arrays', () => {
         const iter = looppa('ciao');
         assert.ok(iter.map);
         assert.equal(iter.length, 4);
-        assert.deepEqual(iter, ['c', 'i', 'a', 'o']);
+        assert.deepEqual(iter, [[0, 'c'], [1, 'i'], [2, 'a'], [3, 'o']]);
     });
 
     it('convert objects into arrays', () => {
