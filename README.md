@@ -16,38 +16,45 @@ Always returns an Array of `[value, key]`.
 npm i looppa -S
 ```
 
+# Doc
+
+Looppa will convert your primitives to array returning a mapping function that can be used to convert the values received
+
+```
+looppa(collection:any)(function(value:any, key:string|number, index:number) {}):array
+
+```
 # Usage
 ```js
 import looppa from 'looppa';
 
 // normalize null and undefined
-const nullCollection = looppa(null) // []
-const undefinedCollection = looppa(undefined) // []
+const nullCollection = looppa(null)() // []
+const undefinedCollection = looppa(undefined)() // []
 
 // arrays will be left untouched
-const array = looppa(['foo', null, undefined]); // [['foo', 0], [null, 1], [undefined, 2]]
+const array = looppa(['foo', null, undefined])(); // [['foo', 0], [null, 1], [undefined, 2]]
 
 // numbers to array
-const numbers = looppa(0, 4); // [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]]
-const square = numbers.map(([n]) => n * 2); // [2, 4, 6, 8]
+const numbers = looppa(0, 4)(n => n * 2); // [2, 4, 6, 8]
 
 // strings to array
-const string = looppa('ciao'); // [['c', 0], ['i', 1], ['a', 2], ['o', 3]]
+const string = looppa('ciao')(); // [['c', 0], ['i', 1], ['a', 2], ['o', 3]]
 
 // objects to array
-const obj = looppa({ foo: 'bar', buz: 'baz' }); // [['foo', 'bar'], ['buz', 'baz']]
+const obj = looppa({ foo: 'bar', buz: 'baz' })(); // [['foo', 'bar'], ['buz', 'baz']]
 
 // Map to array
 const myMap = new Map();
 myMap.set('foo', 'bar');
 myMap.set('buz', 'baz');
-const map = looppa(myMap) // [['foo', 'bar'], ['buz', 'baz']]
+const map = looppa(myMap)() // [['foo', 'bar'], ['buz', 'baz']]
 
 // Set to array
 const mySet = new Set();
 mySet.add('foo');
 mySet.add('bar');
-const map = looppa(mySet); // [['foo', 'foo'], ['bar', 'bar']]
+const map = looppa(mySet)(); // [['foo', 'foo'], ['bar', 'bar']]
 ```
 
 # With React.js
