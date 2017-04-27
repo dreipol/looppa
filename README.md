@@ -87,7 +87,7 @@ This script is really handy if you need to deal with React loops
 
   <h1>Map</h1>
   <ul>
-    {looppa(new Map().set({}, 'bar')).map(([value, key]) => (
+    {looppa(new Map().set(1, 'bar')).map(([value, key]) => (
       <li>{key}, {value}</li>
     ))}
   </ul>
