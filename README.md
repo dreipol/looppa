@@ -7,8 +7,12 @@
 [![MIT License][license-image]][license-url]
 
 Simple functional script to loop array, strings, numbers, objects, Map and Set.
+Looppa will always returns a function to map your primitives
 
-Always returns an Array of `[value, key]`.
+```
+looppa(collection:any)(function(value:any, key:string|number, index:number) {}):array
+
+```
 
 # Installation
 
@@ -16,14 +20,7 @@ Always returns an Array of `[value, key]`.
 npm i looppa -S
 ```
 
-# Doc
 
-Looppa will convert your primitives to array returning a mapping function that can be used to convert the values received
-
-```
-looppa(collection:any)(function(value:any, key:string|number, index:number) {}):array
-
-```
 # Usage
 ```js
 import looppa from 'looppa';
