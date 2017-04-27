@@ -9,31 +9,24 @@ export default function looppa(collection) {
         return [];
     }
 
-    // don't touch arrays
-    if (Array.isArray(collection)) {
-        return collection;
+    // handle objects with an 'entries' function
+    // such as: Arrays, Maps, Sets, NodeLists...
+    if (typeof collection.entries === 'function') {
+        return [...collection.entries()];
     }
 
     // handle numbers and strings
     switch (typeof collection) {
         case 'number':
-            return Object.keys(Array.from(Array(collection)));
+            return Array.from({ length: collection }, (v, key) => key);
         case 'string':
             return collection.split('');
         default:
-            //noop
+            // Default for all other object types, booleans and symbols
+            return Object
+                .keys(collection)
+                .map((key) => {
+                    return [key, collection[key]];
+                });
     }
-
-    // get the object entries
-    if (Object.prototype.toString.call(collection) === '[object Object]') {
-        return Object
-            .keys(collection)
-            .reduce(function(acc, key) {
-                acc.push([key, collection[key]]);
-                return acc;
-            }, []);
-    }
-
-    // loop Map and Set
-    return Array.from(collection);
 }
