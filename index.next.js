@@ -19,17 +19,20 @@ function toArray(collection, to) {
         return [];
     }
 
+    // Make sure that strings will be always parsed as arrays
+    const items = typeof collection === 'string' ? Array.from(collection) : collection;
+
     // handle objects with an 'entries' function
     // such as: Arrays, Maps, Sets, NodeLists...
-    if (typeof collection.entries === 'function') {
-        return [...collection.entries()].map(entry => entry.reverse());
+    if (typeof items.entries === 'function') {
+        return [...items.entries()].map(entry => entry.reverse());
     }
 
     // Default for all other object types, strings, booleans and symbols
     return Object
-        .keys(collection)
+        .keys(items)
         .map((key) => {
-            return [collection[key], key];
+            return [items[key], key];
         });
 }
 
