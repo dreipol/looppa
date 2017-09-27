@@ -5,9 +5,9 @@
   "main": "index.js",
   "module": "index.next.js",
   "scripts": {
-    "prepublish": "rollup -n looppa -f umd index.next.js > index.js",
+    "prepare": "rollup -n looppa -f umd index.next.js > index.js",
     "lint": "eslint index.next.js test.js",
-    "test": "npm run prepublish && npm run lint && mocha test"
+    "test": "npm run prepare && npm run lint && mocha test"
   },
   "repository": {
     "type": "git",
