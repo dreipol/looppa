@@ -2,7 +2,7 @@
  * Try to convert to array any kind of javascript primitive
  * @param   {any} collection - hopefully something that we can loop
  * @param   {number} to - the end of a number range
- * @returns {arrya} it will return always an array
+ * @return {arrya} it will return always an array
  */
 function toArray(collection, to) {
     // Special case: handle numbers
@@ -22,8 +22,10 @@ function toArray(collection, to) {
     // Make sure that strings will be always parsed as arrays
     const items = typeof collection === 'string' ? Array.from(collection) : collection;
 
-    // handle objects with an 'entries' function
-    // such as: Arrays, Maps, Sets, NodeLists...
+    /*
+     * handle objects with an 'entries' function
+     * such as: Arrays, Maps, Sets, NodeLists...
+     */
     if (typeof items.entries === 'function') {
         return [...items.entries()].map(entry => entry.reverse());
     }
@@ -40,7 +42,7 @@ function toArray(collection, to) {
  * Helper function to determine if number is a Number
  *
  * @param  {number}  number - the value to check
- * @return {Boolean} is it a number?
+ * @return {boolean} is it a number?
  */
 function isNumber(number) {
     return typeof number === 'number' && !isNaN(number);
@@ -50,7 +52,7 @@ function isNumber(number) {
  * Transform the collecition into an array and return a function that can be looped
  * @param   {any} collection
  * @param   {number} to
- * @returns {function} function that will receive (value, key, index) always
+ * @return {function} function that will receive (value, key, index) always
  */
 export default function looppa(collection, to) {
     return function(fn) {
