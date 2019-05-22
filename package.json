@@ -4,6 +4,7 @@
   "description": "Simple functional script to loop array, strings, numbers, objects, Map and Set",
   "main": "index.js",
   "module": "index.next.js",
+  "types": "./index.next.d.ts",
   "scripts": {
     "prepare": "rollup -n looppa -f umd index.next.js > index.js",
     "lint": "eslint index.next.js test.js",
