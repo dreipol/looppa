@@ -38,3 +38,4 @@ jspm_packages
 
 # skip generated files
 index.js
+.idea
