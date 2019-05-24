@@ -29,9 +29,9 @@
   },
   "homepage": "https://github.com/dreipol/looppa#readme",
   "devDependencies": {
-    "@dreipol/eslint-config": "^6.0.2",
-    "eslint": "^5.8.0",
-    "mocha": "^5.2.0",
-    "rollup": "^0.66.6"
+    "@dreipol/eslint-config": "^6.0.4",
+    "eslint": "^5.16.0",
+    "mocha": "^6.1.4",
+    "rollup": "^1.12.3"
   }
 }
