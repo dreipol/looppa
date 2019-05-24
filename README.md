@@ -26,8 +26,8 @@ npm i looppa -S
 import looppa from 'looppa';
 
 // normalize null and undefined
-const nullCollection = looppa(null)() // []
-const undefinedCollection = looppa(undefined)() // []
+const nullCollection = looppa(null)(); // []
+const undefinedCollection = looppa(undefined)(); // []
 
 // arrays will be left untouched
 const array = looppa(['foo', null, undefined])(); // [['foo', 0], [null, 1], [undefined, 2]]
@@ -45,7 +45,7 @@ const obj = looppa({ foo: 'bar', buz: 'baz' })(); // [['foo', 'bar'], ['buz', 'b
 const myMap = new Map();
 myMap.set('foo', 'bar');
 myMap.set('buz', 'baz');
-const map = looppa(myMap)() // [['foo', 'bar'], ['buz', 'baz']]
+const map = looppa(myMap)(); // [['foo', 'bar'], ['buz', 'baz']]
 
 // Set to array
 const mySet = new Set();

@@ -45,7 +45,7 @@ describe('looppa the looper', () => {
         const iter = looppa(1, 3)();
         assert.ok(iter.map);
         assert.equal(iter.length, 3);
-        assert.realDeepEqual(iter, [[1, 1], [2, 2], [3, 3]]);
+        assert.realDeepEqual(iter, [[1, 0], [2, 1], [3, 2]]);
     });
 
     it('parse properly numbers arguments', () => {

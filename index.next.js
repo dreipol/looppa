@@ -8,7 +8,7 @@ function toArray(collection, to) {
     // Special case: handle numbers
     if (typeof to !== 'undefined') {
         if (isNumber(collection) && isNumber(to)) {
-            return Array.from({ length: (to - collection + 1) }, (v, key) => [collection + key, collection + key]);
+            return Array.from({ length: (to - collection + 1) }, (v, key) => [collection + key, key]);
         }
 
         throw new TypeError('Both arguments need to be a number when creating a number range.');
@@ -50,16 +50,16 @@ function isNumber(number) {
 
 /**
  * Transform the collecition into an array and return a function that can be looped
- * @param   {any} collection
- * @param   {number} to
+ * @param  {any} collection
+ * @param  {number} to
  * @return {function} function that will receive (value, key, index) always
  */
 export default function looppa(collection, to) {
     return function(fn) {
-        let arr = toArray(collection, to);
+        const arr = toArray(collection, to);
 
         if (fn) {
-            arr = arr.map(([value, key], index) => fn(value, key, index));
+            return arr.map(([value, key], index) => fn(value, key, index));
         }
 
         return arr;
