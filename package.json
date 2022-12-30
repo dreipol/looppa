@@ -31,7 +31,7 @@
   "devDependencies": {
     "@dreipol/eslint-config": "^6.0.4",
     "eslint": "^5.16.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "rollup": "^1.12.3"
   }
 }
